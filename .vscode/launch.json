@@ -2,24 +2,125 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug Fullstack: attach",
-      "request": "attach",
-      "cwd": "${workspaceFolder}/backend/functions",
+      "name": "Debug Stand Alone Crawl",
+      "request": "launch",
+      "runtimeVersion": "24",
+      "runtimeArgs": [
+      ],
+      "env": {
+      },
+      "cwd": "${workspaceFolder}",
+      "program": "build/stand-alone/crawl.js",
       "skipFiles": [
         "<node_internals>/**"
       ],
       "type": "node",
-      "preLaunchTask": "Fullstack:debug"
+      "outputCapture": "std",
+      "preLaunchTask": "Backend:prepare",
+      "killBehavior": "forceful"
     },
     {
-      "name": "Debug Fullstack: attach: with proxy",
-      "request": "attach",
-      "cwd": "${workspaceFolder}/backend/functions",
+      "name": "Debug Stand Alone Crawl + Browser",
+      "request": "launch",
+      "runtimeVersion": "24",
+      "runtimeArgs": [
+      ],
+      "env": {
+        "DEBUG_BROWSER": "true"
+      },
+      "cwd": "${workspaceFolder}",
+      "program": "build/stand-alone/crawl.js",
       "skipFiles": [
         "<node_internals>/**"
       ],
       "type": "node",
-      "preLaunchTask": "Fullstack:debug:with-proxy"
+      "outputCapture": "std",
+      "preLaunchTask": "Backend:prepare",
+      "killBehavior": "forceful"
+    },
+    {
+      "name": "Debug Stand Alone Crawl - EU",
+      "request": "launch",
+      "runtimeVersion": "24",
+      "runtimeArgs": [
+      ],
+      "env": {
+        "GCLOUD_PROJECT": "reader-6b7dc",
+        "FIRESTORE_DATABASE": "reader-eu",
+        "GCP_STORAGE_BUCKET": "reader-eu"
+      },
+      "cwd": "${workspaceFolder}",
+      "program": "build/stand-alone/crawl.js",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node",
+      "outputCapture": "std",
+      "preLaunchTask": "Backend:prepare",
+      "killBehavior": "forceful"
+    },
+    {
+      "name": "Debug Stand Alone Search",
+      "request": "launch",
+      "runtimeVersion": "24",
+      "runtimeArgs": [
+      ],
+      "env": {
+        // "GCLOUD_PROJECT": "reader-6b7dc",
+        // "PREFERRED_PROXY_COUNTRY": "us",
+        // "JINA_CRAWLER_OFFLOAD_ORIGIN": "https://r.jina.ai"
+      },
+      "cwd": "${workspaceFolder}",
+      "program": "build/stand-alone/search.js",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node",
+      "outputCapture": "std",
+      "preLaunchTask": "Backend:prepare",
+      "killBehavior": "forceful"
+    },
+    {
+      "name": "Debug Stand Alone Search + Offload",
+      "request": "launch",
+      "runtimeVersion": "24",
+      "runtimeArgs": [
+      ],
+      "env": {
+        // "GCLOUD_PROJECT": "reader-6b7dc",
+        // "PREFERRED_PROXY_COUNTRY": "us",
+        // "JINA_CRAWLER_OFFLOAD_ORIGIN": "https://r.jina.ai"
+      },
+      "cwd": "${workspaceFolder}",
+      "program": "build/stand-alone/search.js",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node",
+      "outputCapture": "std",
+      "preLaunchTask": "Backend:prepare",
+      "killBehavior": "forceful"
+    },
+    {
+      "name": "Debug Stand Alone SERP",
+      "request": "launch",
+      "runtimeVersion": "24",
+      "runtimeArgs": [
+      ],
+      "env": {
+        "GCLOUD_PROJECT": "reader-6b7dc",
+        // "OVERRIDE_GOOGLE_DOMAIN": "www.google.com.hk",
+        // "PREFERRED_PROXY_COUNTRY": "us"
+      },
+      "cwd": "${workspaceFolder}",
+      "program": "build/stand-alone/serp.js",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node",
+      "outputCapture": "std",
+      "preLaunchTask": "Backend:prepare",
+      "killBehavior": "forceful"
     },
     {
       "name": "Attach",
@@ -38,23 +139,6 @@
         "<node_internals>/**"
       ],
       "type": "node"
-    },
-    {
-      "name": "Debug Fullstack",
-      "request": "launch",
-      "runtimeArgs": [
-        "emulators:start",
-        "--import=../.firebase-emu",
-        "--export-on-exit=../.firebase-emu",
-      ],
-      "cwd": "${workspaceFolder}/backend/functions",
-      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/firebase",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "type": "node",
-      "preLaunchTask": "Fullstack:prepare",
-      "killBehavior": "polite"
     },
   ]
 }
